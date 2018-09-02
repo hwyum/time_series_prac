@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "## Reference: https://a-little-book-of-r-for-time-series.readthedocs.io/en/latest/src/timeseries.html#time-series-analysis\n\n##1 Load data\nkings <- scan(\"http://robjhyndman.com/tsdldata/misc/kings.dat\",skip=3)\nts(kings)\nkings_ts <- ts(kings)\n\nbirths <- scan(\"http://robjhyndman.com/tsdldata/data/nybirths.dat\")\nbirthstimeseries <- ts(births, frequency=12, start=c(1946,1))\nbirthstimeseries\n\nsouvenir <- scan(\"http://robjhyndman.com/tsdldata/data/fancy.dat\")\nsouvenirtimeseries <- ts(souvenir, frequency=12, start=c(1987,1))\n\n##2 Plotting Time Series Data\nplot.ts(kings)\nplot.ts(birthstimeseries)\nplot.ts(souvenir) \n# --> it appears that an additive model is not appropriate for describing this time series, \n# since the size of the seasonal fluctuations and random fluctuations seem to increase \n# with the level of the time series. \n# Thus, we may need to transform the time series in order to get a transformed time series \n# that can be described using an additive model.\n\nlogsouvenirtimeseries <- log(souvenirtimeseries)\nplot.ts(logsouvenirtimeseries)\n# Here we can see that the size of the seasonal fluctuations and random fluctuations \n# in the log-transformed time series seem to be roughly constant over time, \n# and do not depend on the level of the time series. \n# Thus, the log-transformed time series can probably be described using an additive model.\n\n\n## 3. Decomposing Time Series\n# Decomposing a time series means separating it into its constituent components, \n# which are usually a trend component and an irregular component, \n# and if it is a seasonal time series, a seasonal component.\n\n",
+    "created" : 1535635985923.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "2402204725",
+    "id" : "D99BBAFE",
+    "lastKnownWriteTime" : 4320366504,
+    "last_content_update" : 1535637007497,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
